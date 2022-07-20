@@ -1,7 +1,17 @@
+using AutoMapper;
+using BurgerApp.Helpers;
+using BurgerApp.Mappers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAutoMapper(typeof(OrderMapper));
 builder.Services.AddControllersWithViews();
+builder.Services.InjectServices();
+builder.Services.InjectRepositories();
+
+string connString = builder.Configuration.GetConnectionString("BurgerAppDbConnection");
+builder.Services.InjectDbContext(connString);
 
 var app = builder.Build();
 

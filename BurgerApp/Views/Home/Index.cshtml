@@ -1,7 +1,11 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+﻿@model List<OrderListViewModel>
+
+    <h3>Orders:</h3>
+    <ul>
+    @foreach (var order in Model)
+    {
+        <li>@order.UserFullName</li>
+    }
+    </ul>
+
+

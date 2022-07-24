@@ -1,0 +1,35 @@
+﻿@model List<OrderListViewModel>;
+
+<h1>Admin Panel</h1>
+<h3>Orders</h3>
+
+<table class="table">
+    <tr>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col" class="text-center">User</th>
+        <th scope="col" class="text-center">Burgers</th>
+        <th scope="col" class="text-center">Details</th>
+        <th scope="col" class="text-center">Edit</th>
+        <th scope="col" class="text-center">Delete</th>
+    </tr>
+
+    <tbody>
+        @foreach (var order in @Model)
+        {
+            <tr>
+                <td scope="col" class="text-center">@order.OrderId</td>
+                <td scope="col" class="text-center">@order.UserFullName</td>
+                <td scope="col" class="text-center">
+                    @String.Join(", ", order.Burgers)
+                </td>
+                <td scope="col" class="text-center"><a href="@Url.Action("details", "order")/@order.OrderId">More info</a></td>
+                <td scope="col" class="text-center"><a href="@Url.Action("edit", "order")/@order.OrderId">Edit</a></td>
+                <td scope="col" class="text-center"><a href="@Url.Action("delete", "order")/@order.OrderId">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-action="Index">Back</a>
+
+

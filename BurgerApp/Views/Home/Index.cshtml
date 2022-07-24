@@ -1,11 +1,11 @@
-﻿@model List<OrderListViewModel>
+﻿@model List<BurgerListViewModel>
 
-    <h3>Orders:</h3>
-    <ul>
-    @foreach (var order in Model)
-    {
-        <li>@order.UserFullName</li>
-    }
-    </ul>
+<h1 class="display-1"> 7 FAST Food ® - Quality and tradition</h1>
+<p class="lead mb-xxl-5">From 1987 we offer you the best fast food in Skopje</p>
 
 
+<partial name="~/Views/Shared/_BurgerCards.cshtml" for="@Model"></partial>
+
+<div class="d-flex justify-content-center">
+    <a class="btn btn-primary my-3" asp-controller="Burger" asp-action="Index">More burgers</a>
+</div>

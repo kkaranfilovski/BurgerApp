@@ -5,7 +5,8 @@ using BurgerApp.Mappers;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddAutoMapper(typeof(OrderMapper));
+//builder.Services.AddAutoMapper(typeof(OrderMapper));
+builder.Services.InjectAutoMapper();
 builder.Services.AddControllersWithViews();
 builder.Services.InjectServices();
 builder.Services.InjectRepositories();

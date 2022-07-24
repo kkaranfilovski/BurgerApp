@@ -1,0 +1,17 @@
+﻿@model List<BurgerListViewModel>
+
+<h3>Our menu:</h3>
+
+<div class="card-group">
+    @foreach (var burger in Model)
+    {  
+      <div class="card">
+        <img class="card-img-top" src="@burger.Image" alt="Card image cap" height="250">
+        <div class="card-body">
+        <h5 class="card-title">@burger.Name</h5>
+        <p class="card-text">@burger.Price MKD</p>
+        <p class="card-text">Fries: @(burger.HasFries ? "Yes": "No" )</p>
+    </div>
+  </div>
+    }
+</div>

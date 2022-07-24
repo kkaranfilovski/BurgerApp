@@ -18,7 +18,8 @@ namespace BurgerApp.DataAccess.Data
                         Price = 150,
                         IsVegan = false,
                         IsVegeterian = false,
-                        HasFries = true
+                        HasFries = true,
+                        Image = "https://www.pngall.com/wp-content/uploads/2016/05/Burger-Free-Download-PNG.png"
                     },
                     new Burger
                     {
@@ -27,7 +28,8 @@ namespace BurgerApp.DataAccess.Data
                         Price = 180,
                         IsVegan = false,
                         IsVegeterian = false,
-                        HasFries = true
+                        HasFries = true,
+                        Image = "https://www.pngmart.com/files/16/Bacon-Cheese-Burger-Transparent-PNG.png"
                     },
                     new Burger
                     {
@@ -36,7 +38,8 @@ namespace BurgerApp.DataAccess.Data
                         Price = 140,
                         IsVegan = false,
                         IsVegeterian = true,
-                        HasFries = true
+                        HasFries = true,
+                        Image = "https://www.kindpng.com/picc/m/537-5374610_veg-patties-png-burger-images-hd-png-transparent.png"
                     },
                     new Burger
                     {
@@ -45,7 +48,8 @@ namespace BurgerApp.DataAccess.Data
                         Price = 200,
                         IsVegan = true,
                         IsVegeterian = true,
-                        HasFries = false
+                        HasFries = false,
+                        Image = "https://www.seekpng.com/png/full/316-3165034_falafel-burger-hamburger.png"
                     }
                 );
 

@@ -10,23 +10,18 @@ namespace BurgerApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IOrderService _orderService;
+        private readonly IBurgerService _burgerService;
 
-        public HomeController(ILogger<HomeController> logger, IOrderService orderService)
+        public HomeController(ILogger<HomeController> logger, IBurgerService burgerService)
         {
             _logger = logger;
-            _orderService = orderService;
+            _burgerService = burgerService;
         }
 
         public IActionResult Index()
         {
-            var model = _orderService.GetAllOrders();
+            var model = _burgerService.GetAllBurgersForHomePage();
             return View(model);
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
     }
 }

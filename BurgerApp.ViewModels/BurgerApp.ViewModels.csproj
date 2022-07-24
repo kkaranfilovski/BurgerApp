@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="BurgerViewModels\" />
     <Folder Include="UserViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BurgerApp.Domain\BurgerApp.Domain.csproj" />
   </ItemGroup>
 
 </Project>

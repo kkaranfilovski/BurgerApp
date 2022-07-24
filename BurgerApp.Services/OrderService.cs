@@ -3,11 +3,6 @@ using BurgerApp.DataAccess.Repositories.Interfaces;
 using BurgerApp.Domain.Models;
 using BurgerApp.Services.Interfaces;
 using BurgerApp.ViewModels.OrderViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BurgerApp.Services
 {
@@ -24,11 +19,20 @@ namespace BurgerApp.Services
 
         public List<OrderListViewModel> GetAllOrders()
         {
-            var orders = _orderRepository.GetAll();
-            
-            var orderListViewModel = orders.Select(_mapper.Map<Order, OrderListViewModel>).ToList();
-            var a = 5;
-            return orderListViewModel;
+            return _orderRepository.GetAll().Select(_mapper.Map<Order, OrderListViewModel>).ToList();
+        }
+
+        public OrderDetailsViewModel GetOrderById(int id)
+        {
+            var order = _orderRepository.GetById(id);
+            return _mapper.Map<Order, OrderDetailsViewModel>(order);
+        }
+
+        public void DeleteOrder(int id)
+        {
+            var order = _orderRepository.GetById(id);
+
+            _orderRepository.Delete(id);
         }
     }
 }

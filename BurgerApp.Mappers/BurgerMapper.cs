@@ -9,6 +9,7 @@ namespace BurgerApp.Mappers
         public BurgerMapper()
         {
             CreateMap<Burger, BurgerListViewModel>();
+            CreateMap<Burger, BurgerDropdownViewModel>();
         }
     }
 }

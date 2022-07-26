@@ -19,7 +19,9 @@ namespace BurgerApp.Mappers
                 .ForMember(dest => dest.Burgers, opt => opt.MapFrom(src => src.BurgerOrders.Select(x => x.Burger.Name).ToList()))
                 .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.User.Address))
                 .ForMember(dest => dest.TotalPrice, opt => opt.MapFrom(src => src.BurgerOrders.Select(x => x.Burger.Price).ToList().Sum()))
-                .ForMember(dest => dest.status, opt => opt.MapFrom(src => src.IsDelivered));                
+                .ForMember(dest => dest.status, opt => opt.MapFrom(src => src.IsDelivered));
+
+            CreateMap<Order, OrderViewModel>().ReverseMap();
         }
     }
 }

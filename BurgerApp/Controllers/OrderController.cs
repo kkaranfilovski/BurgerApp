@@ -8,11 +8,13 @@ namespace BurgerApp.Controllers
     {
         private readonly IOrderService _orderService;
         private readonly IBurgerService _burgerService;
+        private readonly IUserService _userService;
 
-        public OrderController(IOrderService orderService, IBurgerService burgerService)
+        public OrderController(IOrderService orderService, IBurgerService burgerService, IUserService userService)
         {
             _orderService = orderService;
             _burgerService = burgerService;
+            _userService = userService;
         }
 
         public IActionResult Index()
@@ -35,12 +37,23 @@ namespace BurgerApp.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            ViewBag.Users = _userService.GetUsersForDropdown();
+            ViewBag.Burgers = _burgerService.GetBurgersForDropdown();
+            var model = new OrderViewModel();
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Create(int id)
+        public IActionResult Create(OrderViewModel orderViewModel)
         {
+            ViewBag.Users = _userService.GetUsersForDropdown();
+            ViewBag.Burgers = _burgerService.GetBurgersForDropdown();
+
+            if(ModelState.IsValid)
+            {
+                _orderService.CreateOrder(orderViewModel);
+                return RedirectToAction("AllOrders");
+            }
             return View();
         }
 
@@ -58,7 +71,7 @@ namespace BurgerApp.Controllers
 
         public IActionResult Delete(int id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return View("BadRequest");
             }

@@ -6,5 +6,6 @@ namespace BurgerApp.Services.Interfaces
     {
         List<BurgerListViewModel> GetAllBurgersForHomePage();
         List<BurgerListViewModel> GetAllBurgers();
+        List<BurgerDropdownViewModel> GetBurgersForDropdown();
     }
 }

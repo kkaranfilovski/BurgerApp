@@ -28,5 +28,10 @@ namespace BurgerApp.Services
             return _burgerRepository.GetAll().Select(_mapper.Map<Burger, BurgerListViewModel>).ToList();
         }
 
+        public List<BurgerDropdownViewModel> GetBurgersForDropdown()
+        {
+            return _burgerRepository.GetAll().Select(_mapper.Map<Burger, BurgerDropdownViewModel>).ToList();
+        }
+
     }
 }

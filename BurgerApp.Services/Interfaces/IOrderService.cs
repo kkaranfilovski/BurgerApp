@@ -6,6 +6,7 @@ namespace BurgerApp.Services.Interfaces
     {
         List<OrderListViewModel> GetAllOrders();
         OrderDetailsViewModel GetOrderById(int id);
+        void CreateOrder(OrderViewModel orderViewModel);
         void DeleteOrder(int id);
     }
 }

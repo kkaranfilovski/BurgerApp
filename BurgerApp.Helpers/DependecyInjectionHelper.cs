@@ -21,12 +21,14 @@ namespace BurgerApp.Helpers
         {
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<IBurgerService, BurgerService>();
+            services.AddTransient<IUserService, UserService>();
         }
 
         public static void InjectRepositories(this IServiceCollection services)
         {
             services.AddTransient<IRepository<Order>, OrderRepository>();
             services.AddTransient<IRepository<Burger>, BurgerRepository>();
+            services.AddTransient<IRepository<User>, UserRepository>(); 
         }
 
         public static void InjectDbContext(this IServiceCollection services, string connString)
@@ -39,6 +41,7 @@ namespace BurgerApp.Helpers
         {
             services.AddAutoMapper(typeof(OrderMapper));
             services.AddAutoMapper(typeof(BurgerMapper));
+            services.AddAutoMapper(typeof(UserMapper));
         }
 
     }

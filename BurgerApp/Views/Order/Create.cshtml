@@ -1,0 +1,66 @@
+﻿@model OrderViewModel
+
+<h3>Create order:</h3>
+
+@*<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+
+            <div class="form-group my-3">
+                <label asp-for="UserId" class="form-label"></label>
+                <select class="form-control" asp-for="UserId" asp-items="@(new SelectList(ViewBag.Users, "Id", "FullName"))">
+                    <option selected disabled>Select user</option>
+                </select>
+                <span class="text-danger" asp-validation-for="UserId"></span>
+            </div>
+
+            <div class="form-group my-3">
+                <label asp-for="PaymentMethod" class="form-label"></label>
+                <select class="form-control" asp-for="PaymentMethod" asp-items="Html.GetEnumSelectList<PaymentMethod>()">
+                    <option selected disabled>Select Payment method</option>
+                </select>
+                <span class="text-danger" asp-validation-for="PaymentMethod"></span>
+            </div>
+
+            <div class="form-group my-3">
+                <label class="form-label" asp-for="BurgerId">Choose burgers</label>
+                <select class="form-control" asp-for="BurgerId" asp-items="@(new MultiSelectList(ViewBag.Burgers, "Id", "Name"))">
+                    <option selected disabled>Select burgers</option>
+                </select>
+                <span class="text-danger" asp-validation-for="BurgerId"></span>
+            </div>
+
+            <button type="submit" class="btn btn-outline-success mt-4">Create</button>
+        </form>
+    </div>
+</div>*@
+
+<form asp-action="Create" asp-controller="Order" method="post">
+
+    <div class="form-group my-3">
+        <label class="form-label" asp-for="UserId">Choose User</label>
+        <select class="form-control" asp-for="UserId" asp-items="@(new SelectList(ViewBag.Users, "Id", "FullName"))" required>
+            <option selected disabled>Select user</option>
+        </select>
+        <span class="text-danger" asp-validation-for="UserId"></span>
+    </div>
+
+    <div class="form-group my-3">
+        <label class="form-label" asp-for="PaymentMethod">Choose payment method</label>
+        <select class="form-control" asp-for="PaymentMethod" asp-items="Html.GetEnumSelectList<PaymentMethod>()" required>
+            <option selected disabled>Select Payment method</option>
+        </select>
+        <span class="text-danger" asp-validation-for="PaymentMethod"></span>
+    </div>
+
+    <div class="form-group my-3">
+        <label class="form-label" asp-for="BurgerId">Choose burgers</label>
+        <select class="form-control" asp-for="BurgerId" asp-items="@(new MultiSelectList(ViewBag.Burgers, "Id", "Name"))" required> 
+            <option selected disabled>Select burgers</option>
+        </select>
+        <span class="text-danger" asp-validation-for="BurgerId"></span>
+    </div>
+
+    <button class="btn btn-outline-primary" type="submit">Create order</button>
+</form>
+

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BurgerApp.Domain.Enums;
+using BurgerApp.Domain.Models;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BurgerApp.ViewModels.OrderViewModels
 {
@@ -11,18 +8,15 @@ namespace BurgerApp.ViewModels.OrderViewModels
     {
         public int Id { get; set; }
 
-        [Display(Name = "User")]
-        [Required(ErrorMessage = "Please select user")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please select user")]
         public int UserId { get; set; }
 
-        [Required(ErrorMessage = "Please enter your address")]
-        public string Address { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Please select payment method")]
+        public PaymentMethod PaymentMethod { get; set; }
 
-        [Required(ErrorMessage = "Please enter your location")]
-        public string Location { get; set; }
-
-        [Display(Name = "Burgers")]
         [Required(ErrorMessage = "Please select burger")]
         public List<int> BurgerId { get; set; }
+
+        public List<BurgerOrder> BurgerOrders { get; set; } = new List<BurgerOrder>();
     }
 }

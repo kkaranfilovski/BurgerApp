@@ -41,16 +41,32 @@ namespace BurgerApp.Services
 
         public void CreateOrder(OrderViewModel orderViewModel)
         {
-            var user = _userRepository.GetById(orderViewModel.UserId);
-
             foreach (var id in orderViewModel.BurgerId)
             {
                 var burger = _burgerRepository.GetById(id);
-                orderViewModel.BurgerOrders.Add(new BurgerOrder() { BurgerId = burger.Id, OrderId = orderViewModel.Id });   
+                orderViewModel.BurgerOrders.Add(new BurgerOrder() { BurgerId = burger.Id, OrderId = orderViewModel.Id });
             }
 
             var order = _mapper.Map<Order>(orderViewModel);
             _orderRepository.Insert(order);
+        }
+
+        public OrderViewModel GetOrderForEdit(int id)
+        {
+            var order = _orderRepository.GetById(id);
+            return _mapper.Map<OrderViewModel>(order);
+        }
+
+        public void EditOrder(OrderViewModel orderViewModel)
+        {
+            foreach (var id in orderViewModel.BurgerId)
+            {
+                var burger = _burgerRepository.GetById(id);
+                orderViewModel.BurgerOrders.Add(new BurgerOrder() { BurgerId = burger.Id, OrderId = orderViewModel.Id });
+            }
+
+            var order = _mapper.Map<Order>(orderViewModel);
+            _orderRepository.Update(order);
         }
     }
 }

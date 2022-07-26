@@ -58,14 +58,26 @@ namespace BurgerApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
-            return View();
+            ViewBag.Users = _userService.GetUsersForDropdown();
+            ViewBag.Burgers = _burgerService.GetBurgersForDropdown();
+
+            var model = _orderService.GetOrderForEdit(id);
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(OrderViewModel orderViewModel)
         {
+            ViewBag.Users = _userService.GetUsersForDropdown();
+            ViewBag.Burgers = _burgerService.GetBurgersForDropdown();
+
+            if (ModelState.IsValid)
+            {
+                _orderService.EditOrder(orderViewModel);
+                return RedirectToAction("AllOrders");
+            }
             return View();
         }
 

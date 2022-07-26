@@ -1,33 +1,32 @@
 ﻿@model OrderViewModel
 
-<h3>Create order:</h3>
+@{
+    var selectedBurgers = Model.BurgerOrders.Select(x => x.BurgerId); 
+}
 
-<form asp-action="Create" asp-controller="Order" method="post">
+<h3>Edit order:</h3>
+
+<form asp-action="Edit" asp-controller="Order" method="post">
 
     <div class="form-group my-3">
         <label class="form-label" asp-for="UserId">Choose User</label>
         <select class="form-control" asp-for="UserId" asp-items="@(new SelectList(ViewBag.Users, "Id", "FullName"))">
-            <option selected disabled>Select user</option>
         </select>
         <span class="text-danger" asp-validation-for="UserId"></span>
     </div>
 
     <div class="form-group my-3">
         <label class="form-label" asp-for="PaymentMethod">Choose payment method</label>
-        <select class="form-control" asp-for="PaymentMethod" asp-items="Html.GetEnumSelectList<PaymentMethod>()">
-            <option selected disabled>Select Payment method</option>
-        </select>
+        <select class="form-control" asp-for="PaymentMethod" asp-items="Html.GetEnumSelectList<PaymentMethod>()"></select>
         <span class="text-danger" asp-validation-for="PaymentMethod"></span>
     </div>
 
     <div class="form-group my-3">
         <label class="form-label" asp-for="BurgerId">Choose burgers</label>
-        <select class="form-control" asp-for="BurgerId" asp-items="@(new MultiSelectList(ViewBag.Burgers, "Id", "Name"))"> 
-            <option selected disabled>Select burgers</option>
+        <select class="form-control" asp-for="BurgerId" asp-items="@(new MultiSelectList(ViewBag.Burgers, "Id", "Name", selectedBurgers))"> 
         </select>
         <span class="text-danger" asp-validation-for="BurgerId"></span>
     </div>
 
-    <button class="btn btn-outline-primary" type="submit">Create order</button>
+    <button class="btn btn-outline-primary" type="submit">Edit order</button>
 </form>
-

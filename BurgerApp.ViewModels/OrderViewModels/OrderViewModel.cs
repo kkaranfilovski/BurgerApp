@@ -18,5 +18,8 @@ namespace BurgerApp.ViewModels.OrderViewModels
         public List<int> BurgerId { get; set; }
 
         public List<BurgerOrder> BurgerOrders { get; set; } = new List<BurgerOrder>();
+
+        [Display(Name = "Check if the order is delivered")]
+        public bool IsDelivered { get; set; }
     }
 }

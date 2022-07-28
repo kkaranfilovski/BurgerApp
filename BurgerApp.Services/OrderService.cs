@@ -54,6 +54,8 @@ namespace BurgerApp.Services
         public OrderViewModel GetOrderForEdit(int id)
         {
             var order = _orderRepository.GetById(id);
+            order.BurgerOrders.Clear();
+            _orderRepository.Update(order);
             return _mapper.Map<OrderViewModel>(order);
         }
 
